@@ -28,17 +28,15 @@ def check_link(token, url):
     return response.ok
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Аналитака ссылок bit.ly')
-    parser.add_argument('url', help='Короткая ссылка bit.ly или длинная ссылка для обработки')
+    parser = argparse.ArgumentParser(description='Аналитака ссылок bit.ly', formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('url', help='Короткая ссылка bit.ly или длинная ссылка для обработки\nПример короткой ссылки: bit.ly/2Iw9i4X\nПример длинной ссылки: https://yandex.ru')
     args = parser.parse_args()
     return args.url
 
 if __name__ == '__main__':
-    load_dotenv()
     url = parse_arguments()
+    load_dotenv()
     token = os.getenv('TOKEN')
-    long_link = 'https://www.youtube.com/' # long link example
-    short_link ='bit.ly/2WUrzNe' # short link example
     try:
         if check_link(token, url):
             print('Число переходов по ссылке {}'.format(count_clicks(token, url)))
