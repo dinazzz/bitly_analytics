@@ -28,8 +28,11 @@ def check_link(token, url):
     return response.ok
 
 def parse_arguments():
+    help = '''Короткая ссылка bit.ly или длинная ссылка для обработки
+Пример короткой ссылки: bit.ly/2Iw9i4X
+Пример длинной ссылки: https://yandex.ru'''
     parser = argparse.ArgumentParser(description='Аналитака ссылок bit.ly', formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument('url', help='Короткая ссылка bit.ly или длинная ссылка для обработки\nПример короткой ссылки: bit.ly/2Iw9i4X\nПример длинной ссылки: https://yandex.ru')
+    parser.add_argument('url', help=help)
     args = parser.parse_args()
     return args.url
 
